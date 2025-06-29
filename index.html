@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Selamat Data Di Randi X Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('https://files.catbox.moe/8hqd3z.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    #enter-button {
+      padding: 15px 40px;
+      background: linear-gradient(45deg, #ff8c00, #ff5722);
+      color: white;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #enter-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .contact-admin-btn {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #25D366;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .contact-admin-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-admin-btn:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
+    #main-content {
+      display: none;
+      max-width: 600px;
+    }
+
+    .welcome {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 30px 35px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      margin-bottom: 30px;
+    }
+
+    .welcome h1 {
+      font-size: 2.3em;
+      margin-bottom: 12px;
+    }
+
+    .welcome p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .bkin {
+      font-size: 1.2em;
+      margin-top: 18px;
+      color: #ffd700;
+      font-weight: bold;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    .panel-list {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .panel-list h2 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .panel-list ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.05em;
+    }
+
+    .panel-list ul li {
+      margin-bottom: 10px;
+    }
+
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .btn-link {
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #25D366, #128C7E);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tombol Masuk -->
+  <button id="enter-button">Masuk</button>
+
+  <!-- Tombol Contact Admin -->
+  <a class="contact-admin-btn" href="https://wa.me/6283867759076" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    Nomor Admin
+  </a>
+
+  <!-- Musik -->
+  <audio id="background-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
+
+  <!-- Konten Website -->
+  <div id="main-content">
+    <div class="welcome">
+      <h1>Selamat Datang di Randi X Store</h1>
+      <p>Kami menyediakan berbagai <strong>reseller panel</strong> dengan harga terjangkau dan layanan terbaik.</p>
+      <div class="bkin">💎 BKIN - Bukti Kita Itu Nyata</div>
+
+      <div class="panel-list">
+        <h2>📋 Daftar Panel & Harga</h2>
+        <ul>
+          <li>✔️ Reseller Panel V1 — <strong>Rp5.000</strong> (ADP: Rp8.000)</li>
+          <li>✔️ Reseller Panel V2 — <strong>Rp8.000</strong> (ADP: Rp12.000)</li>
+          <li>✔️ Reseller Panel V3 — <strong>Rp10.000</strong> (ADP: Rp15.000)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="link-container">
+      <a class="btn-link" href="https://wa.me/62881026232237?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Panel%20V1." target="_blank">📦 Beli Panel V1</a>
+      <a class="btn-link" href="https://wa.me/6281998691221?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Panel%20V2." target="_blank">📦 Beli Panel V2</a>
+      <a class="btn-link" href="https://wa.me/6283867759076?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20Panel%20V3." target="_blank">📦 Beli Panel V3</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('enter-button').addEventListener('click', function () {
+      document.getElementById('enter-button').style.display = 'none';
+      document.querySelector('.contact-admin-btn').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+
+      var audio = document.getElementById('background-music');
+      audio.play().catch(function(error) {
+        console.log("Pemutaran otomatis diblokir oleh browser: ", error);
+      });
+    });
+  </script>
+
+</body>
+</html>
