@@ -2,89 +2,127 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pembayaran Randi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Randi Payment</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: #fff;
       margin: 0;
       padding: 0;
+      background: black;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
       text-align: center;
     }
-    header {
-      padding: 20px;
-      background-color: #111;
-      font-size: 24px;
-      font-weight: bold;
-      color: #0f0;
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 100px;
     }
-    .container {
-      padding: 30px;
-    }
-    .qr-container {
-      background: #222;
-      padding: 20px;
-      border-radius: 12px;
-      display: inline-block;
-    }
-    img.qr {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 10px;
-    }
-    .desc {
+
+    h2 {
+      font-size: 1.5em;
       margin-top: 10px;
-      font-size: 16px;
+      color: #cfcfcf;
     }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #0f0;
-      color: #000;
+
+    .button {
+      background: linear-gradient(to right, #28a745, #0f0);
+      color: white;
+      font-size: 1.2em;
       border: none;
-      border-radius: 6px;
+      padding: 15px 30px;
+      border-radius: 12px;
       cursor: pointer;
-    }
-    button:hover {
-      background-color: #0c0;
-    }
-    footer {
       margin-top: 30px;
-      font-size: 14px;
-      color: #888;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .card {
+      border: 2px solid #00ff99;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.1em;
+    }
+
+    a.qris {
+      display: inline-block;
+      border: 2px solid #00ff99;
+      padding: 10px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <header>QR Pembayaran Randi 🧾</header>
+<!-- Suara otomatis -->
+<audio autoplay>
+  <source src="https://cdn.pixabay.com/download/audio/2023/04/19/audio_9b09f75b47.mp3?filename=startup-logo-143041.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="container">
-    <div class="qr-container">
-      <img src="https://i.ibb.co/pXqRwsm/qris.png" alt="QRIS" class="qr">
-      <div class="desc">Scan QR ini untuk membayar via QRIS (DANA, OVO, Gopay, dll)</div>
-      <button onclick="salin()">Salin Nomor Pembayaran</button>
-      <p id="status" style="margin-top:10px;"></p>
-    </div>
+<!-- Halaman Depan -->
+<div id="home" class="page active">
+  <h1>Hai, Saya Al Randi</h1>
+  <h2>Selamat Datang Di Website Payment.</h2>
+  <button class="button" onclick="showPage('payment')">Payment</button>
+</div>
+
+<!-- Halaman Payment -->
+<div id="payment" class="page">
+  <h1 style="color:#00ff99;">PAYMENT<br>AL RANDI</h1>
+  <h2 id="time" style="color:#00ff99;"></h2>
+
+  <div class="card">
+    <strong>DANA:</strong> 08xxxxxxxxxx<br>
+    Atas Nama: AL RANDI
   </div>
+  <div class="card">
+    <strong>GOPAY:</strong> 08xxxxxxxxxx<br>
+    Atas Nama: AL RANDI
+  </div>
+  <div class="card">
+    <strong>OVO:</strong> 08xxxxxxxxxx<br>
+    Atas Nama: AL RANDI
+  </div>
+  <div class="card">
+    <strong>QRIS:</strong><br>
+    <a class="qris" href="#">Klik di sini</a><br>
+    <small>Scan QR untuk bayar</small>
+  </div>
+</div>
 
-  <footer>
-    &copy; 2025 RandiStore. All rights reserved.
-  </footer>
+<script>
+  // Ganti halaman
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+  }
 
-  <script>
-    function salin() {
-      const nomor = "085123456789"; // ganti dengan nomor asli
-      navigator.clipboard.writeText(nomor).then(() => {
-        document.getElementById("status").innerText = "✅ Nomor berhasil disalin!";
-      }, () => {
-        document.getElementById("status").innerText = "❌ Gagal menyalin nomor.";
-      });
-    }
-  </script>
+  // Waktu live
+  function updateClock() {
+    const now = new Date();
+    const jam = String(now.getHours()).padStart(2, '0');
+    const menit = String(now.getMinutes()).padStart(2, '0');
+    const detik = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById("time").innerText = `${jam}.${menit}.${detik}`;
+  }
+  setInterval(updateClock, 1000);
+</script>
 
 </body>
 </html>
