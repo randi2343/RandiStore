@@ -1,128 +1,55 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Randi Payment</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      text-align: center;
-    }
+<html lang="id"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Randi Payment</title><style>*{box-sizing:border-box;}body{margin:0;padding:0;font-family:'Orbitron',sans-serif;text-align:center;background-color:black;}.page{display:none;background-image:url('https://img1.pixhost.to/images/6887/617171971_imgtmp.jpg');background-size:cover;background-position:center;min-height:100vh;padding:50px 0 60px;color:#fff;}.active{display:block;}h1,h2,strong,small,.card,.qris{text-shadow:1px 1px 4px rgba(0,0,0,0.8);}h1{font-size:2.5em;margin-top:60px;color:#fff;}h2{font-size:1.4em;margin-top:10px;color:#e0e0e0;}#time{font-weight:bold;color:#00ffcc;}.button{background:linear-gradient(to right,#1dd1a1,#10ac84);color:#fff;font-size:1.2em;border:none;padding:15px 30px;border-radius:12px;cursor:pointer;margin-top:30px;box-shadow:0 4px 8px rgba(0,0,0,0.3);}.card{border:2px solid #00ffcc;margin:20px auto;padding:15px;border-radius:10px;font-size:1.1em;width:80%;max-width:400px;background-color:rgba(0,0,0,0.6);color:#fff;}a.qris{display:inline-block;border:2px solid #00ffcc;padding:10px;border-radius:8px;color:#fff;text-decoration:none;margin-top:10px;cursor:pointer;}.back-btn{position:absolute;top:10px;left:10px;background-color:rgba(0,0,0,0.5);color:#fff;border:1px solid #fff;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:14px;}#qris-img{margin-top:15px;max-width:90%;border:2px solid #00ffcc;border-radius:10px;display:none;}.credit{position:relative;margin-top:40px;font-size:0.9em;color:#cccccc;text-shadow:1px 1px 2px black;}audio{display:none;}</style></head><body>
 
-    h1 {
-      font-size: 2.5em;
-      margin-top: 100px;
-    }
-
-    h2 {
-      font-size: 1.5em;
-      margin-top: 10px;
-      color: #cfcfcf;
-    }
-
-    .button {
-      background: linear-gradient(to right, #28a745, #0f0);
-      color: white;
-      font-size: 1.2em;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 30px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    .page {
-      display: none;
-    }
-
-    .active {
-      display: block;
-    }
-
-    .card {
-      border: 2px solid #00ff99;
-      margin: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 1.1em;
-    }
-
-    a.qris {
-      display: inline-block;
-      border: 2px solid #00ff99;
-      padding: 10px;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-
-    audio {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-
-<!-- Suara otomatis -->
-<audio autoplay>
-  <source src="https://cdn.pixabay.com/download/audio/2023/04/19/audio_9b09f75b47.mp3?filename=startup-logo-143041.mp3" type="audio/mpeg">
+<!-- Musik saat klik tombol Payment (Bensound - Stargazing) -->
+<audio id="paymentMusic" preload="auto">
+  <source src="https://cdn.bensound.com/bensound-music/bensound-stargazing.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Halaman Depan -->
+<!-- Halaman Utama -->
 <div id="home" class="page active">
   <h1>Hai, Saya Al Randi</h1>
   <h2>Selamat Datang Di Website Payment.</h2>
-  <button class="button" onclick="showPage('payment')">Payment</button>
+  <button class="button" onclick="goToPayment()">Payment</button>
 </div>
 
 <!-- Halaman Payment -->
 <div id="payment" class="page">
-  <h1 style="color:#00ff99;">PAYMENT<br>AL RANDI</h1>
-  <h2 id="time" style="color:#00ff99;"></h2>
-
-  <div class="card">
-    <strong>DANA:</strong> 08xxxxxxxxxx<br>
-    Atas Nama: AL RANDI
-  </div>
-  <div class="card">
-    <strong>GOPAY:</strong> 08xxxxxxxxxx<br>
-    Atas Nama: AL RANDI
-  </div>
-  <div class="card">
-    <strong>OVO:</strong> 08xxxxxxxxxx<br>
-    Atas Nama: AL RANDI
-  </div>
+  <button class="back-btn" onclick="showPage('home')">← Kembali</button>
+  <h1>PAYMENT<br>AL RANDI</h1>
+  <h2 id="time"></h2>
+  <div class="card"><strong>DANA:</strong> 08xxxxxxxxxx<br>Atas Nama: AL RANDI</div>
+  <div class="card"><strong>GOPAY:</strong> 08xxxxxxxxxx<br>Atas Nama: AL RANDI</div>
+  <div class="card"><strong>OVO:</strong> 08xxxxxxxxxx<br>Atas Nama: AL RANDI</div>
   <div class="card">
     <strong>QRIS:</strong><br>
-    <a class="qris" href="#">Klik di sini</a><br>
-    <small>Scan QR untuk bayar</small>
+    <a class="qris" onclick="showQR()">Klik di sini</a><br>
+    <small>Scan QR untuk bayar</small><br>
+    <img id="qris-img" src="https://img1.pixhost.to/images/6887/617171971_imgtmp.jpg" alt="QRIS Image"/>
   </div>
+  <div class="credit">Created by Randi © 2025</div>
 </div>
 
 <script>
-  // Ganti halaman
-  function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
-  }
-
-  // Waktu live
-  function updateClock() {
-    const now = new Date();
-    const jam = String(now.getHours()).padStart(2, '0');
-    const menit = String(now.getMinutes()).padStart(2, '0');
-    const detik = String(now.getSeconds()).padStart(2, '0');
-    document.getElementById("time").innerText = `${jam}.${menit}.${detik}`;
-  }
-  setInterval(updateClock, 1000);
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function goToPayment(){
+  const m=document.getElementById("paymentMusic");
+  m.muted=false; m.volume=1; m.currentTime=0;
+  m.play().catch(e=>alert("Audio error: izinkan suara di browser."));
+  showPage("payment");
+}
+function showQR(){
+  const qr=document.getElementById("qris-img");
+  qr.style.display=qr.style.display==="none"?"block":"none";
+}
+function updateClock(){
+  const n=new Date(),h=("0"+n.getHours()).slice(-2),mi=("0"+n.getMinutes()).slice(-2),s=("0"+n.getSeconds()).slice(-2);
+  document.getElementById("time").innerText=`${h}.${mi}.${s}`;
+}
+setInterval(updateClock,1000);
 </script>
 
-</body>
-</html>
+</body></html>
