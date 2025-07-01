@@ -1,74 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payment to Randi</title>
+  <title>Pembayaran Randi</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #0f172a;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: #fff;
       margin: 0;
+      padding: 0;
       text-align: center;
     }
-    h1 {
-      color: #38bdf8;
-      font-size: 2em;
+    header {
+      padding: 20px;
+      background-color: #111;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0f0;
+    }
+    .container {
+      padding: 30px;
+    }
+    .qr-container {
+      background: #222;
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    img.qr {
+      width: 200px;
+      height: 200px;
       margin-bottom: 10px;
     }
-    p {
-      margin: 0 0 10px 0;
+    .desc {
+      margin-top: 10px;
+      font-size: 16px;
     }
-    img {
-      width: 250px;
-      height: 250px;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
-    .copy-box {
-      background: #1e293b;
-      padding: 15px;
-      border-radius: 10px;
-      display: inline-block;
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      margin-bottom: 20px;
     }
-    .copy-box:hover {
-      background: #334155;
+    button:hover {
+      background-color: #0c0;
     }
-    .copy-text {
-      font-size: 18px;
-      user-select: all;
-    }
-    .footer {
+    footer {
+      margin-top: 30px;
       font-size: 14px;
-      color: #94a3b8;
-      margin-top: 20px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>Payment to Randi</h1>
-  <p>Silakan scan QRIS di bawah ini atau salin nomor Dana</p>
-  <img src="qris.png" alt="QRIS Randi">
-  <div class="copy-box" onclick="copyToClipboard('081234567890')">
-    <span class="copy-text" id="copyText">081234567890</span>
+
+  <header>QR Pembayaran Randi 🧾</header>
+
+  <div class="container">
+    <div class="qr-container">
+      <img src="https://i.ibb.co/pXqRwsm/qris.png" alt="QRIS" class="qr">
+      <div class="desc">Scan QR ini untuk membayar via QRIS (DANA, OVO, Gopay, dll)</div>
+      <button onclick="salin()">Salin Nomor Pembayaran</button>
+      <p id="status" style="margin-top:10px;"></p>
+    </div>
   </div>
-  <div class="footer">© 2025 Randi Store</div>
+
+  <footer>
+    &copy; 2025 RandiStore. All rights reserved.
+  </footer>
 
   <script>
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Nomor berhasil disalin!");
+    function salin() {
+      const nomor = "085123456789"; // ganti dengan nomor asli
+      navigator.clipboard.writeText(nomor).then(() => {
+        document.getElementById("status").innerText = "✅ Nomor berhasil disalin!";
+      }, () => {
+        document.getElementById("status").innerText = "❌ Gagal menyalin nomor.";
       });
     }
   </script>
+
 </body>
 </html>
